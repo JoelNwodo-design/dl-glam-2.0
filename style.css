@@ -4,34 +4,53 @@
     --background: hsl(0 0 10);
     --light-background: hsl(0 0 20);
     --border: hsl(0 0 25);
-    --primary-text-color: hsl(0 0 100);
-    --secondary-text-color: hsl(0 0 90);
-    --tertiary-text-color: hsl(0 0 80);
-    --primary-color: hsl(240 50% 50%);
+    --primary-text-color: hsl(0 0 95);
+    --secondary-text-color: hsl(0 0 80);
+    --tertiary-text-color: hsl(0 0 70);
+    --primary-color: hsl(240 50% 55%);
     --secondary-color: hsl(240 50% 20%);
-    --accent-color: hsl(30 50% 30%);
+    --accent-color: hsl(30 70% 40%);
     --danger-color: hsl(10 100% 30%);
     --warning-color: hsl(50 70% 50%);
     --success-color: hsl(120 70% 50%);
     --info-color: hsl(270 70% 30%);
 }
+/* for light mode */
+@media(prefers-color-scheme: light){
+    :root{
+        --dark-background: hsl(0 0 80%);
+        --background: hsl(0 0 90%);
+        --light-background: hsl(0 0 100%);
+        --border: hsl(0 0 25);
+        --primary-text-color: hsl(0 0 5%);
+        --secondary-text-color: hsl(0 0 10%);
+        --tertiary-text-color: hsl(0 0 30%);
+        --primary-color: hsl(240 50% 55%);
+        --secondary-color: hsl(240 50% 20%);
+        --accent-color: hsl(30 70% 40%);
+        --danger-color: hsl(10 100% 30%);
+        --warning-color: hsl(50 70% 50%);
+        --success-color: hsl(120 70% 50%);
+        --info-color: hsl(270 70% 30%);
+    }
+}
 
 /* Typography */
 h1{
     color: var(--primary-text-color);
-    font-size: clamp(2rem, 3vw, 4rem);
+    font-size: clamp(1rem, 3vw + .5rem, 2rem);
     font-weight: 700;
     font-family: 'Josefin-sans', sans-serif;
 }
 h2{
     color: var(--primary-text-color);
-    font-size: 1.4rem;
+    font-size: clamp(0.7rem, 2vw, 1.4rem);
     font-weight: 700;
     font-family: 'Josefine Sans', sans-serif;
 }
 h3{
     color: var(--secondary-text-color);
-    font-size: 1.15rem;
+    font-size: clamp(0.575rem, 1vw + .125rem, 1.15rem);
     font-family: 'Nunito', arial;
 }
 p{
@@ -45,6 +64,36 @@ p{
     font-size: .7rem;
     letter-spacing: 2px;
     font-family: sans-serif;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+    ::view-transition-group(page-content){
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+    }
+    ::view-transition-old(page-content){
+        animation-name: slide-out;
+    }
+    ::view-transition-new(page-content){
+        animation-name: slide-in;
+    }
+    main{
+        view-transition-name: page-content;
+    }
+    @keyframes slide-out {
+        to {
+            translate: -100vw;
+        }
+    }
+    @keyframes slide-in {
+        from {
+            translate: 100vw;
+        }
+    }
 }
 
 body{
@@ -63,6 +112,7 @@ header{
     padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 20px;
     position: sticky;
     display: grid;
     grid-template-columns: 100px 100px auto;
@@ -166,8 +216,10 @@ nav a:hover{
 
     .links-container a{
         padding: 10px 10px;
+        transition: all 700ms ease-out;
     }
     .links-container a:hover{
-        background-color: var(--light-background);
+        background-color: var(--accent-color);
     }
 }
+
