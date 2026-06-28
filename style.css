@@ -19,7 +19,7 @@
 /* Typography */
 h1{
     color: var(--primary-text-color);
-    font-size: 2rem;
+    font-size: clamp(2rem, 3vw, 4rem);
     font-weight: 700;
     font-family: 'Josefin-sans', sans-serif;
 }
@@ -55,90 +55,119 @@ body{
 
 header{
     box-sizing: border-box;
-    height: 154px;
+    height: 55%;
     width: device-width;
     background-color: var(--primary-color);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    padding-top: 27px;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     position: sticky;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-column: 1/3;
-    gap: auto;
+    grid-template-columns: 100px 100px auto;
+    gap: 1em;
+    z-index: 0;
 }
-#hamburger{
-    font-size: 20px;
-}
-header, main, footer {
-  position: relative;  /* z-index only works when position is set */
-  z-index: 1;          /* anything above 0 will sit on top of the canvas */
+@media(min-width: 1024px){
+    header{
+        height: 100%;
+    }
+    .line-break{
+        display: none;
+    }
+    .logo-box{
+        align-items: center;
+    }
 }
 
-#logo{
+.line-break{
+    box-sizing: border-box;
+    width: 100%;
+    height: 4px;
+}
+
+.logo-box{
+    display: flex;
+    justify-content: center;
+}
+.logo{
     width: 100px;
     height: 100px;
     border-radius: 50px;
-    background-color: white;
+    background-color: var(--background);
 }
 
-#brandName{
-    font-size: clamp(3rem, 3vw, 4rem);
+.links-container{
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+    width: 65%;
+    height: 100%;
+    background-color: var(--light-background);
+    box-shadow: -10px 0 10px var(--dark-background);
+    transition: 0.4s ease-in;
 }
-
-#nav{
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-}
-#menuBtn{display: none;}
-#navLinks{
+nav{
     display: flex;
-    flex-direction: row;
-    gap: 1rem;
+    justify-content: flex-end;
 }
-#navLinks>a{
+nav a{
+    display: flex;
+    box-sizing: border-box;
+    height: auto;
+    width: 100%;
+    padding: 20px 30px;
+    justify-content: flex-start;
     text-decoration: none;
-    cursor: pointer;
-    color: black;
-    font-size: 1rem;
 }
-@media (max-width: 768px){
-    #menuBtn {
+nav a:hover{
+    background-color: var(--primary-color);
+}
+#sidebar-active{
+    display: none;
+}
+#sidebar-active:checked ~ .links-container{
+    right: 0;
+}
+.open-sidebar-btn, .close-sidebar-btn{
+    display: block;
+    padding: 20px;
+}
+#sidebar-active:checked ~ #overlay{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+
+
+@media (min-width: 1024px){
+    .open-sidebar-btn, #menu, .close-sidebar-btn, #overlay{
+        display: none;
+    }
+
+    .links-container{
         display: flex;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 5px;
+        flex-direction: row;
+        height: 100%;
+        width: fit-content;
+        z-index: 0;
+        box-shadow: none;
         position: relative;
-    }
-    #menuBtn span {
-        position: absolute;
-        display: block;
-        width: 25px;
-        height: 3px;
-        background-color: #000;
-        border-radius: 3px;
-        transition: all 0.3s ease; /* smoothly animates any property change */
-    }
-    #menuBtn.open span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg); /* moves down then rotates */
+        right: 0;
+        background-color: transparent;
     }
 
-    #menuBtn.open span:nth-child(2) {
-        opacity: 0; /* middle line fades out */
-        transform: scaleX(0); /* shrinks horizontally */
+    .links-container a{
+        padding: 10px 10px;
     }
-
-    #menuBtn.open span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg); /* moves up then rotates */
+    .links-container a:hover{
+        background-color: var(--light-background);
     }
-    #navLinks{position: absolute; display: none; flex-direction: column;}
-    #navLinks.open{display: flex; background-color: white;}
-    #menuBtn:hover>#hamburger{color: brown;}
-    #navLinks.open + #menuBtn{color: brown;}
 }

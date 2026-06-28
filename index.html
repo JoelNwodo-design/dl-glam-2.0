@@ -14,24 +14,37 @@
   </head>
   <body>
     <header>
-      <div id="logo"></div>
+      <div class="logo-box">
+        <div class="logo"></div>
+      </div>
 
-      <h1 id="brandName">DL <br />Glam</h1>
+      <div class="brandName">
+        <h1>
+          DL <br />
+          <div class="line-break"></div>
+          Glam
+        </h1>
+      </div>
 
-      <div id="nav">
-        <div id="menuBtn" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div id="navLinks">
+      <nav>
+        <input type="checkbox" id="sidebar-active" />
+        <label for="sidebar-active" class="open-sidebar-btn">
+          <h3 id="menu">Menu</h3>
+        </label>
+
+        <label for="sidebar-active" id="overlay"></label>
+        <div class="links-container">
+          <label for="sidebar-active" class="close-sidebar-btn">
+            <h3>Close</h3>
+          </label>
+
           <a href="index.html"><h3>Home</h3></a>
           <a href=""><h3>Products</h3></a>
-          <a href=""><h3>About Us</h3></a>
-          <a href=""><h3>Account</h3></a>
-          <a href="colors.html">Style</a>
+          <a href=""><h3>Order</h3></a>
+          <a href=""><h3>Contact</h3></a>
+          <a href="colors.html"><h3>Style</h3></a>
         </div>
-      </div>
+      </nav>
     </header>
     <main></main>
     <footer></footer>
