@@ -132,3 +132,47 @@ p{
     letter-spacing: 2px;
     font-family: sans-serif;
 }
+
+.slider-active{
+    height: 20px;
+    width: 20px;
+}
+.switch-btn{
+    width: 100%;
+    height: 100px;
+    background-color: black;
+}
+.container{
+    width: 50px;
+    height: 20px;
+    background-color: goldenrod;
+    border-radius: 20px;
+    display: flex;
+
+    transition: background-color 1000ms ease-out;
+}
+.container::before {
+    inset: 0;
+    opacity: 0;
+    background: linear-gradient(to right, blue, red);
+    backdrop-filter: blur(5px);
+
+    transition: opacity 1000ms 0.3s ease;
+}
+.container:hover::before{
+    opacity: 1;
+}
+.slider{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 10px;
+
+    transition: transform 500ms ease-out;
+}
+/*.slider-active:checked + .container{
+    background-color: red;
+}*/
+.slider-active:checked + .container .slider {
+    transform: translateX(30px);
+}
