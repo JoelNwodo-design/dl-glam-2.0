@@ -64,6 +64,7 @@ p{
     font-size: .7rem;
     letter-spacing: 2px;
     font-family: sans-serif;
+    text-transform: uppercase;
 }
 
 
@@ -221,5 +222,34 @@ nav a:hover{
     .links-container a:hover{
         background-color: var(--accent-color);
     }
+
+    .active-page {
+        background-color: var(--secondary-color);
+    }
 }
 
+
+
+/* for about page */
+.about-block {
+    height: fit-content;
+    width: 100%;
+    background-color: var(--light-background);
+    border-radius: 10px;
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.about-block h1, .about-block h2, .about-block h3, .about-block p{
+    padding: 3px;
+}
+.about-block a {
+    text-decoration: none;
+}
+.about-block a:hover {
+    background-color: var(--border);
+    border-radius: 5px;
+}
