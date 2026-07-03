@@ -46,4 +46,15 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#node modules
+node_modules/
+
+# Vite
+dist/
+.vite/
+
+# Environment variables
+.env
+.env.local
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode
