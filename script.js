@@ -1,14 +1,13 @@
 
+import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl  = 'https://rghspobxnphvmzhnakmv.supabase.co'
-const supabaseKey  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJnaHNwb2J4bnBodm16aG5ha212Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMzc3NTMsImV4cCI6MjA5NzkxMzc1M30.fSIJv7L3BjLqoPlWOahwCp6lrLJIANSPESFmMEXad-o'
-const supabase = window.supabase.createClient(
-    supabaseUrl,
-    supabaseKey
+export const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
 async function getProducts() {
-  const { data, error } = await client
+  const { data, error } = await supabase
     .from('products')
     .select(`
       *,
